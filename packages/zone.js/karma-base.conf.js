@@ -40,6 +40,11 @@ module.exports = function(config) {
 
     logLevel: config.LOG_INFO,
 
+    customHeaders: [{
+      match: '.*',
+      name: 'Content-Security-Policy',
+      value: `require-trusted-types-for 'script';`,
+    }],
     browsers: ['Chrome'],
 
     captureTimeout: 60000,

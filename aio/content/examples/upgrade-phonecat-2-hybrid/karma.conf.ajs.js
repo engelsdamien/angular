@@ -1,4 +1,4 @@
-//jshint strict: false
+// jshint strict: false
 module.exports = function(config) {
   config.set({
 
@@ -25,8 +25,8 @@ module.exports = function(config) {
       'node_modules/zone.js/dist/zone-testing.js',
 
       // RxJs.
-      { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
-      { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
+      {pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false},
+      {pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false},
 
       // Angular itself and the testing library
       {pattern: 'node_modules/@angular/**/*.js', included: false, watched: false},
@@ -66,12 +66,14 @@ module.exports = function(config) {
 
     frameworks: ['jasmine'],
 
+    customHeaders: [{
+      match: '.*',
+      name: 'Content-Security-Policy',
+      value: `require-trusted-types-for 'script';`,
+    }],
     browsers: ['Chrome'],
 
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-jasmine'
-    ]
+    plugins: ['karma-chrome-launcher', 'karma-jasmine']
 
   });
 };

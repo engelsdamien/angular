@@ -104,6 +104,11 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
+    customHeaders: [{
+      match: '.*',
+      name: 'Content-Security-Policy',
+      value: `require-trusted-types-for 'script';`,
+    }],
     browsers: ['Chrome'],
     singleRun: false,
     captureTimeout: 60000,
